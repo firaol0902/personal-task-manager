@@ -1,0 +1,242 @@
+/* Global Reset & Base Layout */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: #2441b5;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    background: #fcf2f2;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 480px;
+    padding: 20px;
+}
+
+/* Card Styling */
+.card {
+    background: #c9c6c6;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    margin-bottom: 20px;
+}
+
+h1, h2 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Status Banner */
+#api-status {
+    text-align: center;
+    padding: 10px;
+    background: #e8f5e9;
+    color: #2e7d32;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+/* Form Controls & Inputs */
+.input-group {
+    margin-bottom: 15px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #dcdde1;
+    border-radius: 6px;
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border-color: #3498db;
+}
+
+/* Primary Action Buttons */
+button.primary-btn, #task-form button {
+    width: 100%;
+    padding: 12px;
+    background: #3498db;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+button.primary-btn:hover, #task-form button:hover {
+    background: #2980b9;
+}
+
+/* Inline Task Form alignment */
+#task-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+#task-form input {
+    flex: 1;
+}
+
+#task-form button {
+    width: auto;
+    padding: 0 20px;
+}
+
+/* Switch Auth Link */
+.switch-auth {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+    color: #7f8c8d;
+}
+
+.switch-auth a {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.switch-auth a:hover {
+    text-decoration: underline;
+}
+
+/* Dashboard Top Header */
+.dash-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+}
+
+#welcome-user {
+    font-size: 18px;
+    color: #2c3e50;
+}
+
+#logout-btn {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.2s;
+}
+
+#logout-btn:hover {
+    background: #c0392b;
+}
+
+/* Task List Items */
+h3 {
+    font-size: 16px;
+    color: #7f8c8d;
+    margin-bottom: 10px;
+}
+
+#task-list {
+    list-style: none;
+}
+
+.task-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fdfdfd;
+    border: 1px solid #e1e1e1;
+    padding: 12px 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    transition: box-shadow 0.2s;
+}
+
+.task-item:hover {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.task-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+    word-break: break-all;
+}
+
+.task-info input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.task-item.completed .task-title {
+    text-decoration: line-through;
+    color: #95a5a6;
+}
+
+/* Task Action Buttons (Edit & Delete) */
+.task-actions {
+    display: flex;
+    gap: 6px;
+}
+
+.edit-btn, .delete-btn {
+    padding: 6px 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.edit-btn {
+    background: #f39c12;
+    color: white;
+}
+
+.edit-btn:hover {
+    background: #d68910;
+}
+
+.delete-btn {
+    background: #e74c3c;
+    color: white;
+}
+
+.delete-btn:hover {
+    background: #c0392b;
+}
+
+.empty-msg {
+    text-align: center;
+    color: #95a5a6;
+    font-style: italic;
+    padding: 20px;
+}

@@ -1,0 +1,37 @@
+name: Task Manager CI/CD Pipeline
+
+# Trigger this workflow whenever you push code to the 'main' branch
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout your code from GitHub repository
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # 2. Set up Node.js environment on the runner
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      # 3. Test Backend dependencies and syntax
+      - name: Install Backend Dependencies
+        run: |
+          cd backend
+          npm install
+
+      # 4. Test Frontend static files exist
+      - name: Verify Frontend Files
+        run: |
+          cd frontend
+          ls -la index.html script. style.css 2>/dev/null || ls -la index.html
+
+    # Optional future expansion: You could add Docker build steps here too!
