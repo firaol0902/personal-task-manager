@@ -8,12 +8,18 @@ const jwt = require('jsonwebtoken');
 const JWT_SECRET = process.env.JWT_SECRET || 'supersecretkey123';
 
 const transporter = nodemailer.createTransport({
-    service: 'gmail',
+    host: 'smtp.gmail.com',
+    port: 587,
+    secure: false, // false for port 587
     auth: {
-        user: 'mulunehfraol@gmail.com',        
-        pass: 'jikejsewqtrikoms'    
-    }
-}); // FIXED: Added closing parenthesis and bracket here
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
+    },
+    tls: {
+        rejectUnauthorized: false
+    },
+    connectionTimeout: 10000 // 10 seconds timeout so it fails fast instead of hanging
+});
 
 // Register a New User (/api/auth/register)
 router.post('/register', async (req, res) => {
