@@ -99,11 +99,12 @@ router.post('/forgot-password', async (req, res) => {
         user.resetPasswordExpires = Date.now() + 15 * 60 * 1000;
         await user.save();
 
-        // Create reset URL pointing to your frontend (update domain later if needed)
+        // Create reset URL pointing to your live Vercel frontend
         const resetUrl = `https://personal-task-manager-frontend-ochre.vercel.app/reset-password.html?token=${token}`;
 
-        // Send the email
+        // Send the email (Added 'from' field to prevent rejection)
         await transporter.sendMail({
+            from: process.env.EMAIL_USER,
             to: user.email,
             subject: 'Password Reset Request',
             html: `<p>You requested a password reset. Click this <a href="${resetUrl}">link</a> to reset your password. This link expires in 15 minutes.</p>`,
@@ -111,7 +112,7 @@ router.post('/forgot-password', async (req, res) => {
 
         res.status(200).json({ message: 'Password reset email sent successfully' });
     } catch (err) {
-        console.error(err);
+        console.error('Email send error details:', err);
         res.status(500).json({ message: 'Server error sending email' });
     }
 });
