@@ -20,16 +20,8 @@ body {
     border-radius: 12px;
     width: 100%;
     max-width: 480px;
-    padding: 20px;
-}
-
-/* Card Styling */
-.card {
-    background: #c9c6c6;
     padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    margin-bottom: 20px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
 
 h1, h2 {
@@ -38,20 +30,8 @@ h1, h2 {
     text-align: center;
 }
 
-/* Status Banner */
-#api-status {
-    text-align: center;
-    padding: 10px;
-    background: #e8f5e9;
-    color: #2e7d32;
-    border-radius: 6px;
-    font-size: 14px;
-    font-weight: 500;
-    margin-bottom: 20px;
-}
-
 /* Form Controls & Inputs */
-.input-group {
+.form-group {
     margin-bottom: 15px;
 }
 
@@ -65,6 +45,7 @@ input[type="password"] {
     font-size: 15px;
     outline: none;
     transition: border-color 0.2s;
+    box-sizing: border-box;
 }
 
 input[type="text"]:focus,
@@ -73,8 +54,25 @@ input[type="password"]:focus {
     border-color: #3498db;
 }
 
+/* Forgot Password Link Container */
+.forgot-password-container {
+    margin-bottom: 15px;
+    text-align: right;
+}
+
+.forgot-password-container a {
+    font-size: 13px;
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.forgot-password-container a:hover {
+    text-decoration: underline;
+}
+
 /* Primary Action Buttons */
-button.primary-btn, #task-form button {
+.btn-primary, #task-form button {
     width: 100%;
     padding: 12px;
     background: #3498db;
@@ -87,8 +85,57 @@ button.primary-btn, #task-form button {
     transition: background 0.2s;
 }
 
-button.primary-btn:hover, #task-form button:hover {
+.btn-primary:hover, #task-form button:hover {
     background: #2980b9;
+}
+
+/* Switch Auth Link */
+.toggle-container {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+    color: #7f8c8d;
+}
+
+.toggle-container a {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.toggle-container a:hover {
+    text-decoration: underline;
+}
+
+/* Dashboard Top Header */
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+}
+
+#welcome-user {
+    font-size: 18px;
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.btn-danger {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.2s;
+}
+
+.btn-danger:hover {
+    background: #c0392b;
 }
 
 /* Inline Task Form alignment */
@@ -105,54 +152,6 @@ button.primary-btn:hover, #task-form button:hover {
 #task-form button {
     width: auto;
     padding: 0 20px;
-}
-
-/* Switch Auth Link */
-.switch-auth {
-    text-align: center;
-    margin-top: 15px;
-    font-size: 14px;
-    color: #7f8c8d;
-}
-
-.switch-auth a {
-    color: #3498db;
-    text-decoration: none;
-    font-weight: 600;
-}
-
-.switch-auth a:hover {
-    text-decoration: underline;
-}
-
-/* Dashboard Top Header */
-.dash-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 25px;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 15px;
-}
-
-#welcome-user {
-    font-size: 18px;
-    color: #2c3e50;
-}
-
-#logout-btn {
-    background: #e74c3c;
-    color: white;
-    border: none;
-    padding: 8px 14px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: background 0.2s;
-}
-
-#logout-btn:hover {
-    background: #c0392b;
 }
 
 /* Task List Items */

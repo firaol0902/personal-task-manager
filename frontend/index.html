@@ -2,9 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <link rel="stylesheet" href="style.css">
     <title>Personal Task Manager</title>
 </head>
@@ -13,37 +11,42 @@
     <div class="container">
         <h1>Personal Task Manager</h1>
         
-        
-
         <div id="auth-section">
             <h3 id="form-title">Login</h3>
+            
             <form id="auth-form">
-                <div id="username-field" style="display:none; margin-bottom: 10px;">
-                    <input type="text" id="username" placeholder="Username" style="width: 100%; padding: 8px;">
+                <div id="username-field" class="form-group">
+                    <input type="text" id="username" placeholder="Username">
                 </div>
-                <div style="margin-bottom: 10px;">
-                    <input type="email" id="email" placeholder="Email address" required style="width: 100%; padding: 8px;">
+                <div class="form-group">
+                    <input type="email" id="email" placeholder="Email address" required>
                 </div>
-                <div style="margin-bottom: 10px;">
-                    <input type="password" id="password" placeholder="Password" required style="width: 100%; padding: 8px;">
+                <div class="form-group">
+                    <input type="password" id="password" placeholder="Password" required>
                 </div>
-                <button type="submit" id="auth-btn" style="width: 100%; padding: 10px; background: #00796b; color: white; border: none; border-radius: 4px; cursor: pointer;">Login</button>
+                
+                <div class="forgot-password-container">
+                    <a href="forgot-password.html">Forgot Password?</a>
+                </div>
+
+                <button type="submit" id="auth-btn" class="btn-primary">Login</button>
             </form>
-            <p style="text-align: center; margin-top: 10px;">
+            
+            <p class="toggle-container">
                 <span id="toggle-text">Don't have an account?</span> 
-                <a href="#" id="toggle-auth" style="color: #00796b;">Register here</a>
+                <a href="#" id="toggle-auth">Register here</a>
             </p>
         </div>
 
         <div id="dashboard-section" style="display: none;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-                <span id="welcome-user" style="font-weight: bold; color: #333;"></span>
-                <button id="logout-btn" style="padding: 5px 10px; background: #c62828; color: white; border: none; border-radius: 4px; cursor: pointer;">Logout</button>
+            <div class="dashboard-header">
+                <span id="welcome-user"></span>
+                <button id="logout-btn" class="btn-danger">Logout</button>
             </div>
 
-            <form id="task-form" style="display: flex; gap: 10px; margin-bottom: 20px;">
-                <input type="text" id="task-title" placeholder="Add a new task..." required style="flex: 1; padding: 8px;">
-                <button type="submit" style="padding: 8px 15px; background: #00796b; color: white; border: none; border-radius: 4px; cursor: pointer;">Add Task</button>
+            <form id="task-form">
+                <input type="text" id="task-title" placeholder="Add a new task..." required>
+                <button type="submit" class="btn-primary">Add Task</button>
             </form>
 
             <h3>My Tasks</h3>
