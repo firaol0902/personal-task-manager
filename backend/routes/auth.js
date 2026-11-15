@@ -100,7 +100,7 @@ router.post('/forgot-password', async (req, res) => {
         await user.save();
 
         // Create reset URL pointing to your frontend (update domain later if needed)
-        const resetUrl = `https://personal-task-manager-1-mwy4.onrender.com/reset-password.html?token=${token}`;
+        const resetUrl = `https://personal-task-manager-frontend-ochre.vercel.app/reset-password.html?token=${token}`;
 
         // Send the email
         await transporter.sendMail({
