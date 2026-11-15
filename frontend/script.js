@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:5000';
+const API_URL = 'https://personal-task-manager-1-mwy4.onrender.com';
 let isRegistering = false;
 
 // Toggle between Login and Register views
