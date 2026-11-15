@@ -7,18 +7,13 @@ const jwt = require('jsonwebtoken');
 
 const JWT_SECRET = process.env.JWT_SECRET || 'supersecretkey123';
 
+// Restored original working Gmail transporter configuration
 const transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    port: 587,
-    secure: false, // false for port 587
+    service: 'gmail',
     auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS
-    },
-    tls: {
-        rejectUnauthorized: false
-    },
-    connectionTimeout: 10000 // 10 seconds timeout so it fails fast instead of hanging
+        user: process.env.EMAIL_USER || 'mulunehfraol@gmail.com',        
+        pass: process.env.EMAIL_PASS || 'jikejsewqtrikoms'    
+    }
 });
 
 // Register a New User (/api/auth/register)
@@ -80,7 +75,7 @@ router.post('/login', async (req, res) => {
         console.error('Login error:', err);
         res.status(500).json({ error: 'Server error during login.' });
     }
-}); // FIXED: Closed the login route properly here
+});
 
 // ROUTE 3: Forgot Password (/api/auth/forgot-password)
 router.post('/forgot-password', async (req, res) => {
@@ -99,12 +94,11 @@ router.post('/forgot-password', async (req, res) => {
         user.resetPasswordExpires = Date.now() + 15 * 60 * 1000;
         await user.save();
 
-        // Create reset URL pointing to your live Vercel frontend
+        // Reset URL correctly pointing to your live Vercel frontend page
         const resetUrl = `https://personal-task-manager-frontend-ochre.vercel.app/reset-password.html?token=${token}`;
 
-        // Send the email (Added 'from' field to prevent rejection)
+        // Send the email
         await transporter.sendMail({
-            from: process.env.EMAIL_USER,
             to: user.email,
             subject: 'Password Reset Request',
             html: `<p>You requested a password reset. Click this <a href="${resetUrl}">link</a> to reset your password. This link expires in 15 minutes.</p>`,
@@ -112,7 +106,7 @@ router.post('/forgot-password', async (req, res) => {
 
         res.status(200).json({ message: 'Password reset email sent successfully' });
     } catch (err) {
-        console.error('Email send error details:', err);
+        console.error(err);
         res.status(500).json({ message: 'Server error sending email' });
     }
 });
@@ -125,7 +119,7 @@ router.post('/reset-password', async (req, res) => {
         // Find user by token and ensure token hasn't expired
         const user = await User.findOne({
             resetPasswordToken: token,
-            resetPasswordExpires: { $gt: Date.now() } // $gt means "greater than now" (not expired)
+            resetPasswordExpires: { $gt: Date.now() }
         });
 
         if (!user) {
